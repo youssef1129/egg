@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            
+            var o = 2000;
+            var cnt=0;
+         $("#egg").click(function(){
+            
+             cnt++;
+             
+                 $("#score").text(cnt);
+            
+             
+             $(this).stop();
+           $(this).animate({top:"-=300px"},o);
+            $(this).animate({top:"650%"},o,function(){   
+                  
+                $('#egg').css('background-image','url(flos.png)');
+                    alert("you lose");
+                    cnt=0;
+                    o = 2000;
+                    $('#egg').css('background-image','url(egg.png)');
+            });
+            o-=60;
+
+            
+         });
+         
+        });
+    </script>
+    <style>
+        #egg{
+            background-image: url("egg.png");
+            height: 70px;
+            width: 50px;
+            position: relative;
+            top: 400px;
+            left: 50%;
+            background-size:100%;
+            background-repeat: no-repeat;
+            z-index: 3;
+            margin: auto;
+            border: 0px;
+            border-radius: 60px;
+            
+            
+        } 
+        #floor{
+           margin: auto;
+           position: fixed;
+           bottom: 0px;
+           background-repeat: no-repeat;
+           background-size: cover;
+           width: 100%;
+           height: 17%;
+        }
+        #score{
+            margin-left: 10%;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="score">0</h1>
+    <div class="container-xl my-3">
+        <button id="egg" type="button" class="btn btn-outline-light" ></button>
+    </div>
+    
+        <div class="container-fluid">
+            <img id="floor" src="floor.png" alt="floor">
+        </div>
+    
+</body>
+</html>
